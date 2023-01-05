@@ -15,10 +15,10 @@ class Database {
 
     init() {
         this.connection = new Sequelize(configDatabase)
-        models.map( model => model.init(this.connection)).map( model => model.associate && model.associate(this.connection.models))
+        models.map(model => model.init(this.connection)).map(model => model.associate && model.associate(this.connection.models))
     }
 
-    mongo(){
+    mongo() {
         this.mongoConnection = mongoose.connect(
             'mongodb://localhost:27017/codeburger',
             {

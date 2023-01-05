@@ -4,7 +4,7 @@ import Category from '../models/Category'
 import User from '../models/User'
 
 class ProductController {
-    async store(request, response){
+    async store(request, response) {
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
@@ -21,12 +21,12 @@ class ProductController {
 
         const { admin: isAdmin } = await User.findByPk(request.userId)
 
-        if(!isAdmin){
+        if (!isAdmin) {
             return response.status(401).json()
         }
 
         const { filename: path } = request.file
-        const { name, price, category_id , offer } = request.body
+        const { name, price, category_id, offer } = request.body
 
         const product = await Product.create({
             name,
@@ -36,10 +36,10 @@ class ProductController {
             offer,
         })
 
-        return response.json({product})
+        return response.json({ product })
     }
 
-    async index(request, response){
+    async index(request, response) {
 
         const products = await Product.findAll({
             include: [
@@ -54,7 +54,7 @@ class ProductController {
         return response.json(products)
     }
 
-    async update(request, response){
+    async update(request, response) {
 
         const schema = Yup.object().shape({
             name: Yup.string(),
@@ -71,34 +71,34 @@ class ProductController {
 
         const { admin: isAdmin } = await User.findByPk(request.userId)
 
-        if(!isAdmin){
+        if (!isAdmin) {
             return response.status(401).json()
         }
 
         const { id } = request.params
-        
+
         const product = await Product.findByPk(id)
 
-        if(!product) {
+        if (!product) {
             return response.status(401).json({ error: "Make sure your product ID is correct" })
         }
 
         let path
-        if(request.file){
+        if (request.file) {
             path = request.file.filename
         }
 
         const { name, price, category_id, offer } = request.body
 
         await Product.update(
-         {
-            name,
-            price,
-            category_id,
-            path,
-            offer,
-         },
-         { where: { id } }
+            {
+                name,
+                price,
+                category_id,
+                path,
+                offer,
+            },
+            { where: { id } }
         )
 
         return response.status(200).json()

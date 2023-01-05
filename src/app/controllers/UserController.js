@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 
 import User from '../models/User.js'
 
-class UserController{
+class UserController {
     async store(request, response) {
 
         const schema = Yup.object().shape({
@@ -25,8 +25,8 @@ class UserController{
             where: { email },
         })
 
-        if(userExists){
-            return response.status(400).json({ error: 'User already exists'})
+        if (userExists) {
+            return response.status(400).json({ error: 'User already exists' })
         }
 
         const user = await User.create({
@@ -37,8 +37,8 @@ class UserController{
             admin,
         })
 
-        return response.status(201).json( {id: user.id, name, email, admin })
-    } 
+        return response.status(201).json({ id: user.id, name, email, admin })
+    }
 }
 
 export default new UserController()

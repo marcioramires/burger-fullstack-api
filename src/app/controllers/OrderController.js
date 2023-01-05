@@ -5,7 +5,7 @@ import Product from '../models/Product.js'
 import Order from '../schemas/Order.js'
 import User from '../models/User.js'
 
-class OrderController{
+class OrderController {
     async store(request, response) {
 
         const schema = Yup.object().shape({
@@ -24,7 +24,7 @@ class OrderController{
             return response.status(400).json({ error: err.errors })
         }
 
-        const productsId = request.body.products.map( product => product.id)
+        const productsId = request.body.products.map(product => product.id)
 
         const updatedProducts = await Product.findAll({
             where: {
@@ -39,9 +39,9 @@ class OrderController{
             ]
         })
 
-        const editedProduct = updatedProducts.map( product => {
+        const editedProduct = updatedProducts.map(product => {
 
-            const productIndex = request.body.products.findIndex( 
+            const productIndex = request.body.products.findIndex(
                 (requestProduct) => requestProduct.id === product.id
             )
 
@@ -69,7 +69,7 @@ class OrderController{
         const orderResponse = await Order.create(order)
 
         return response.status(201).json(orderResponse)
-    } 
+    }
 
     async index(request, response) {
         const orders = await Order.find()
@@ -90,7 +90,7 @@ class OrderController{
 
         const { admin: isAdmin } = await User.findByPk(request.userId)
 
-        if(!isAdmin){
+        if (!isAdmin) {
             return response.status(401).json()
         }
 
@@ -103,7 +103,7 @@ class OrderController{
             return response.status(400).json({ error: error.message })
         }
 
-        return response.json({ message: 'Status was update'})
+        return response.json({ message: 'Status was update' })
     }
 }
 
