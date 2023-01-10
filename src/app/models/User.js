@@ -6,10 +6,21 @@ class User extends Model {
         super.init(
             {
                 name: Sequelize.STRING,
+                address: Sequelize.STRING,
+                phone: Sequelize.STRING,
                 email: Sequelize.STRING,
+                birthday: Sequelize.STRING,
+                login: Sequelize.STRING,
                 password: Sequelize.VIRTUAL,
                 password_hash: Sequelize.STRING,
                 admin: Sequelize.BOOLEAN,
+                path: Sequelize.STRING,
+                url: {
+                    type: Sequelize.VIRTUAL,
+                    get() {
+                        return `http://localhost:3001/user-file/${this.path}`
+                    },
+                },
             },
             {
                 sequelize,
