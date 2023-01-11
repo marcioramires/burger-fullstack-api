@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "debug": "nodemon --inspect",
-    "start": "pm2 start src/server.js --watch --no-daemon"
+    "build": "rm -rf build"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
