@@ -15,7 +15,6 @@ class OrderController {
                     quantity: Yup.number().required(),
                 })
             ),
-
         })
 
         try {
@@ -63,6 +62,7 @@ class OrderController {
                 name: request.userName,
             },
             products: editedProduct,
+            totalPrice: request.totalPrice,
             status: 'Pedido realizado',
         }
 

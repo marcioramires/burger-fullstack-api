@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-
     user: {
         id: {
             type: String,
@@ -26,10 +25,6 @@ const OrderSchema = new mongoose.Schema({
                 type: Number,
                 required: true,
             },
-            totalPrice: {
-                type: Number,
-                required: true,
-            },
             category: {
                 type: String,
                 required: true,
@@ -39,10 +34,6 @@ const OrderSchema = new mongoose.Schema({
                 required: true,
             },
             quantity: {
-                type: Number,
-                required: true,
-            },
-            totalQuantity: {
                 type: Number,
                 required: true,
             },
