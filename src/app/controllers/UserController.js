@@ -23,10 +23,7 @@ class UserController {
             return response.status(400).json({ error: err.errors })
         }
 
-        let path
-        if (request.file) {
-            path = request.file.filename
-        }
+        const { filename: path } = request.file
 
         const {
             name,

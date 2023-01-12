@@ -13,8 +13,7 @@ const upload = multer(multerConfig)
 
 const routes = new Router()
 
-routes.post('/users', UserController.store)
-routes.get('/users', UserController.index)
+routes.post('/users', upload.single('file'), UserController.store)
 
 routes.post('/sessions', SessionController.store)
 
@@ -31,5 +30,7 @@ routes.put('/categories/:id', upload.single('file'), CategoryController.update)
 routes.post('/orders', OrderController.store)
 routes.put('/orders/:id', OrderController.update)
 routes.get('/orders', OrderController.index)
+
+routes.get('/users', UserController.index)
 
 export default routes
