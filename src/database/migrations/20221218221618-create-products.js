@@ -18,8 +18,24 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      category: {
+      brand: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      tax: {
+        type: Sequelize.DECIMAL,
+        allowNull: false,
+      },
+      stock: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      features: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      category_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       path: {

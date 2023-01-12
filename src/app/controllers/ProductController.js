@@ -9,6 +9,10 @@ class ProductController {
         const schema = Yup.object().shape({
             name: Yup.string().required(),
             price: Yup.number().required(),
+            brand: Yup.string().required(),
+            tax: Yup.number().required(),
+            stock: Yup.number().required(),
+            features: Yup.string().required(),
             category_id: Yup.number().required(),
             offer: Yup.boolean(),
         })
@@ -26,7 +30,16 @@ class ProductController {
         }
 
         const { filename: path } = request.file
-        const { name, price, category_id, offer } = request.body
+        const {
+            name,
+            price,
+            category_id,
+            offer,
+            brand,
+            tax,
+            stock,
+            features
+        } = request.body
 
         const product = await Product.create({
             name,
@@ -34,6 +47,10 @@ class ProductController {
             category_id,
             path,
             offer,
+            brand,
+            tax,
+            stock,
+            features
         })
 
         return response.json({ product })
@@ -61,6 +78,11 @@ class ProductController {
             price: Yup.number(),
             category_id: Yup.number(),
             offer: Yup.boolean(),
+            brand: Yup.string(),
+            tax: Yup.number(),
+            stock: Yup.number(),
+            features: Yup.string(),
+
         })
 
         try {
@@ -88,7 +110,16 @@ class ProductController {
             path = request.file.filename
         }
 
-        const { name, price, category_id, offer } = request.body
+        const {
+            name,
+            price,
+            category_id,
+            offer,
+            brand,
+            tax,
+            stock,
+            features
+        } = request.body
 
         await Product.update(
             {
@@ -97,6 +128,10 @@ class ProductController {
                 category_id,
                 path,
                 offer,
+                brand,
+                tax,
+                stock,
+                features
             },
             { where: { id } }
         )
