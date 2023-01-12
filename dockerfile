@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
@@ -8,8 +8,6 @@ RUN yarn
 
 COPY . .
 
-RUN yarn run build
-
 EXPOSE 3001
 
-CMD [ "node", "build/server.js" ]
+CMD [ "yarn", "start" ]

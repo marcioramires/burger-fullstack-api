@@ -20,7 +20,7 @@ class Database {
 
     mongo() {
         this.mongoConnection = mongoose.connect(
-            'mongodb://localhost:27017/codeburger',
+            'mongodb://mongoburger/burger',
             {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,

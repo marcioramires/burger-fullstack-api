@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  api:
+    build: '.'
+    container_name: apiburger
+    ports:
+      - '3001:3001'
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgresburger
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+
+  mongo:
+    image: mongo
+    container_name: mongoburger
+    ports:
+      - '27017:27017'
