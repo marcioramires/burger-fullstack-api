@@ -20,6 +20,31 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      address: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      phone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      birthday: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      login: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      path: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
       password_hash: {
         type: Sequelize.STRING,
         allowNull: false,
