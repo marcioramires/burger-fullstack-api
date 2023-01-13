@@ -1,6 +1,5 @@
 # API RESTful 
-
-#Para o sistema de vendas de uma hamburgueria
+# Para o sistema de vendas de uma hamburgueria
 
 Projeto desenvolvido em Javascript em ambiente Node.js, para interface com o back-end com registro usuários (clientes e administradores), produtos, pedidos, com gerenciamento do restaurante para os usuários administradores.
 #
