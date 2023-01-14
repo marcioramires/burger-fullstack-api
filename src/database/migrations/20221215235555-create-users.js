@@ -23,17 +23,14 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       phone: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       birthday: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       login: {
         type: Sequelize.STRING,
@@ -43,7 +40,6 @@ module.exports = {
       path: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       password_hash: {
         type: Sequelize.STRING,
