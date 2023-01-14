@@ -1,7 +1,8 @@
 version: '3.7'
 services:
   app:
-    build: .
+    image: acrburger.azurecr.io/bf-api
+    container_name: apiburger
     ports:
       - '3001:3001'
     links:
@@ -9,7 +10,8 @@ services:
       - 'mongo:mongoburger'
       
   postgres:
-    image: 8f405d1985803e95e84b226b02443dc8cdd0009c03be58f14dc5c730bff2348a
+    image: acrburger.azurecr.io/bf-sql
+    container_name: postgresburger
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -17,16 +19,17 @@ services:
       - '5432:5432'
 
   mongo:
-    image: e75008b218dca88c9b1f1124a3372d457e4fe6642b9a2b055e6bc5381663e26a
+    image: acrburger.azurecr.io/bf-nosql
+    container_name: mongoburger
     ports:
       - '27017:27017'
 
-  web:
-    image: 34915b038ed2b0b7a88e17350f19b368877978d3ef3248b8579cde9235d812fb
-    container_name: webserver_nginx
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - 'app:apiburger'
+  # web:
+  #   image: acrburger.azurecr.io/bf-webserver
+  #   container_name: webserver 
+  #   restart: unless-stopped
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   links:
+  #     - 'app:apiburger'

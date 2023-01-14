@@ -18,7 +18,7 @@ class User extends Model {
                 url: {
                     type: Sequelize.VIRTUAL,
                     get() {
-                        return `http://localhost:3001/user-file/${this.path}`
+                        return `/user-file/${this.path}`
                     },
                 },
             },
