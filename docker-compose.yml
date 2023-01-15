@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   app:
-    image: acrburger.azurecr.io/bf-api
+    build: acrburger.azurecr.io/bf-api
     container_name: apiburger
     ports:
       - '3001:3001'
@@ -23,13 +23,13 @@ services:
     container_name: mongoburger
     ports:
       - '27017:27017'
-
-  # web:
-  #   image: acrburger.azurecr.io/bf-webserver
-  #   container_name: webserver 
-  #   restart: unless-stopped
-  #   ports:
-  #     - '80:80'
-  #     - '443:443'
-  #   links:
-  #     - 'app:apiburger'
+  
+  web:
+    image: acrburger.azurecr.io/bf-webserver
+    container_name: webserver 
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - 'app:apiburger'

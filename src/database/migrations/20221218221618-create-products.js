@@ -44,7 +44,7 @@ module.exports = {
       },
       offer: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,
