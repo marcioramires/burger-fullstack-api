@@ -13,14 +13,23 @@ services:
     image: acrburger.azurecr.io/bf-sql
     container_name: postgresburger
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data/postgresburger/data:/var/lib/postgresql/data
+    restart: always
     ports:
       - '5432:5432'
 
   mongo:
     image: acrburger.azurecr.io/bf-nosql
     container_name: mongoburger
+    environment:
+      MONGO_PASSWORD: mongo
+    volumes:
+      - ./data/mongoburger:/var/lib/mongodb/data
+    restart: always
     ports:
       - '27017:27017'
   
